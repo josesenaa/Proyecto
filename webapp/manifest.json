@@ -1,0 +1,158 @@
+{
+  "_version": "1.49.0",
+  "sap.app": {
+    "id": "empleado",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.9.6",
+      "toolsId": "035d6e2b-bbff-4b3e-8eee-14c84567986d"
+    },
+    "dataSources": {
+      "ZEMPLOYEES_SRV": {
+        "uri": "/sap/opu/odata/sap/ZEMPLOYEES_SRV/",
+        "type": "OData",
+        "settings": {
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.113.0",
+      "libs": {
+        "sap.ui.core": {},
+        "sap.m": {},
+        "sap.ui.layout": {},
+        "sap.f": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.ui.table": {},
+        "sap.ushell": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "empleado.i18n.i18n"
+        }
+      },
+      "odataModel": {
+        "type": "sap.ui.model.odata.v2.ODataModel",
+        "dataSource": "ZEMPLOYEES_SRV",
+        "preload": true, 
+        "settings": {
+          "defaultOperationMode": "Server",
+          "defaultBindingMode": "OneWay",
+          "defaultCountMode": "Request"
+        }   
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "empleado.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": false
+      },
+      "routes": [
+        {
+          "name": "Menu",
+          "pattern": "",
+          "target": [
+            "TargetMenu"
+          ]
+        },
+        {
+          "name": "Crear",
+          "pattern": "crear",
+          "target": [
+            "TargetCrear"
+          ]
+        },
+        {
+          "name": "Ver",
+          "pattern": "ver",
+          "target": [
+            "Ver"
+          ]
+        }
+      ],
+      "targets": {
+        "TargetMenu": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": true,
+          "viewId": "Menu",
+          "viewName": "Menu"
+        },
+        "TargetCrear": {
+          "viewType": "XML",
+          "viewId": "Crear",
+          "viewName": "Crear",
+          "transition":"slide",
+          "clearControlAggregation": true
+       },
+       "App": {
+        "viewType": "XML",
+        "viewName": "App"
+      },
+       "Ver": {
+        "viewType": "XML",
+          "viewId": "Ver",
+          "viewName": "Ver",
+          "transition":"slide",
+          "clearControlAggregation": true
+       } 
+      }
+    },
+    "rootView": {
+      "viewName": "empleado.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
+    }
+  }
+}

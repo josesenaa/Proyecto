@@ -1,0 +1,18 @@
+<mvc:View xmlns:core="sap.ui.core"
+          controllerName="empleado.controller.App"
+          xmlns:mvc="sap.ui.core.mvc"
+          xmlns="sap.m"
+          xmlns:html="http://www.w3.org/1999/xhtml" 
+          xmlns:form="sap.ui.layout.form" 
+          xmlns:u="sap.ui.unified">
+
+     <Shell id="shellp">
+       <App id="app">
+           <pages>
+             <Page id="page" title="{i18n>title}" titleAlignment="Center">
+               <content></content>
+           </Page>
+         </pages>
+       </App>
+    </Shell>    
+</mvc:View>
